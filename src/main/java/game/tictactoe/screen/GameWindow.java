@@ -1,14 +1,11 @@
-package game.tictactoe;
+package game.tictactoe.screen;
 
-import javax.swing.JFrame;
-import  javax.swing.ImageIcon;
+import javax.swing.*;
 import java.awt.*;
 
 public class GameWindow extends JFrame {
     public GameWindow()
     {
-        this.setVisible(true);
-
         this.setSize(900,900);
         this.setResizable(false);
         this.setTitle("Tic-Tac-Toe");
@@ -17,7 +14,9 @@ public class GameWindow extends JFrame {
         ImageIcon image = new ImageIcon(getClass().getResource("/images/img.png"));
         this.setIconImage(image.getImage());
 
-        this.getContentPane().setBackground(Color.BLACK);
+        this.getContentPane().setBackground(new Color(141321));
+
+        this.setVisible(true);
     }
 
 }
