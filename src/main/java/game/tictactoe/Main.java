@@ -34,6 +34,7 @@ public class Main{
         ButtonPanel.addButtons(buttons, buttonPanel,gamePlay);
         mainScreen.add(buttonPanel);
 
+
     }
 
 }
