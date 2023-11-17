@@ -11,7 +11,7 @@ public class Textfield extends JLabel {
         this.setForeground(new Color(100,100,100));
         this.setFont(new Font("Ink Free", Font.BOLD,75));
         this.setHorizontalAlignment(JLabel.CENTER);
-        this.setText("TICTACTOE");
+        this.setText("TIC-TAC-TOE");
         this.setOpaque(true);
 
     }

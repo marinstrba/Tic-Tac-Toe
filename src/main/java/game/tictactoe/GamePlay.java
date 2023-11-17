@@ -1,13 +1,13 @@
 package game.tictactoe;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GamePlay implements ActionListener {
 
     private JButton[] buttons;
-
     private boolean playerXTurn = true;
     private final String playerOWon = "Congratulate player O wins !!!";
     private final String playerXWon = "Congratulate player X wins !!!";
@@ -22,6 +22,9 @@ public class GamePlay implements ActionListener {
             if (!buttons[i].getText().equals("") &&
                     buttons[i].getText().equals(buttons[i + 1].getText()) &&
                     buttons[i].getText().equals(buttons[i + 2].getText())) {
+                buttons[i].setBackground(Color.GREEN);
+                buttons[i + 1].setBackground(Color.GREEN);
+                buttons[i + 2].setBackground(Color.GREEN);
                 return true;
             }
         }
@@ -31,6 +34,9 @@ public class GamePlay implements ActionListener {
             if (!buttons[i].getText().equals("") &&
                     buttons[i].getText().equals(buttons[i + 3].getText()) &&
                     buttons[i].getText().equals(buttons[i + 6].getText())) {
+                buttons[i].setBackground(Color.GREEN);
+                buttons[i + 3].setBackground(Color.GREEN);
+                buttons[i + 6].setBackground(Color.GREEN);
                 return true;
             }
         }
@@ -39,16 +45,27 @@ public class GamePlay implements ActionListener {
         if (!buttons[0].getText().equals("") &&
                 buttons[0].getText().equals(buttons[4].getText()) &&
                 buttons[0].getText().equals(buttons[8].getText())) {
+            buttons[0].setBackground(Color.GREEN);
+            buttons[4].setBackground(Color.GREEN);
+            buttons[8].setBackground(Color.GREEN);
             return true;
         }
         if (!buttons[2].getText().equals("") &&
                 buttons[2].getText().equals(buttons[4].getText()) &&
                 buttons[2].getText().equals(buttons[6].getText())) {
+            buttons[2].setBackground(Color.GREEN);
+            buttons[4].setBackground(Color.GREEN);
+            buttons[6].setBackground(Color.GREEN);
             return true;
         }
 
         // No winner found
         return false;
+    }
+
+    private void disableAllButtons(JButton[] buttons) {
+        for (JButton button : buttons)
+            button.setEnabled(false);
     }
 
     @Override
@@ -61,8 +78,10 @@ public class GamePlay implements ActionListener {
                 {
                     buttons[i].setText(playerXTurn ? "X" : "O");
                     if(checkWinner(buttons)) {
-                        System.out.println(playerXTurn ? playerXWon : playerOWon);
-                        return ;
+                        JOptionPane.showMessageDialog(null, playerXTurn ? playerXWon : playerOWon, "Winner", JOptionPane.INFORMATION_MESSAGE);
+                        disableAllButtons(buttons);
+
+                        return;
                     }
                     playerXTurn = !playerXTurn;
                 }
